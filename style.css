@@ -1,0 +1,30 @@
+body {
+	background-color: #0A0A0A;
+	color: #A0B0C0;
+}
+
+canvas {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+canvas {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	touch-action: manipulation;
+}
+
+body {
+	touch-action: none;
+}
+
+body,
+- {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
