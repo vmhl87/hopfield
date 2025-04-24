@@ -36,16 +36,17 @@ function draw(){
 
 	fill(225);
 	
-	button(run ? "PAUSE" : "RUN", width/2, height/2-SZ*ROWS/2-80);
-	button("SPEED: " + speed.toString(), width/2, height/2-SZ*ROWS/2-40);
+	button(run ? "PAUSE" : "RUN", width/2-50, height/2-SZ*ROWS/2-40, 50);
+	button("SPEED: " + speed.toString(), width/2+50, height/2-SZ*ROWS/2-40, 50);
 
-	button("CLEAR", width/2, height/2+SZ*ROWS/2+40);
-	button("RESET MEMORIES", width/2, height/2+SZ*ROWS/2+80);
-	button("ADD MEMORY (" + memories.toString() + " stored)", width/2, height/2+SZ*ROWS/2+120);
+	button("CLEAR", width/2-50, height/2+SZ*ROWS/2+40, 50);
+	button("RANDOMIZE", width/2+50, height/2+SZ*ROWS/2+40, 50);
+	button("RESET MEMORIES", width/2, height/2+SZ*ROWS/2+80, 150);
+	button("ADD MEMORY (" + memories.toString() + " stored)", width/2, height/2+SZ*ROWS/2+120, 150);
 }
 
-function button(T, x, y){
-	textSize(mouseIn(x, y, 150, 20) ? 17 : 16);
+function button(T, x, y, w){
+	textSize(mouseIn(x, y, w, 20) ? 17 : 16);
 	text(T, x, y);
 }
 
@@ -56,12 +57,15 @@ function mouseIn(x, y, w, h){
 function mouseReleased(){
 	col = 0;
 
-	if(mouseIn(width/2, height/2-SZ*ROWS/2-40, 150, 20)) speed = SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];
+	if(mouseIn(width/2-50, height/2-SZ*ROWS/2-40, 50, 20)) run = !run;
 
-	if(mouseIn(width/2, height/2-SZ*ROWS/2-80, 150, 20)) run = !run;
+	if(mouseIn(width/2+50, height/2-SZ*ROWS/2-40, 50, 20)) speed = SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];
 
-	if(mouseIn(width/2, height/2+SZ*ROWS/2+40, 150, 20))
+	if(mouseIn(width/2-50, height/2+SZ*ROWS/2+40, 50, 20))
 		for(let i=0; i<ROWS*COLS; ++i) graph[i] = 1;
+
+	if(mouseIn(width/2+50, height/2+SZ*ROWS/2+40, 50, 20))
+		for(let i=0; i<ROWS*COLS; ++i) graph[i] = Math.random() > 0.5 ? 1 : -1;
 
 	if(mouseIn(width/2, height/2+SZ*ROWS/2+80, 150, 20)){
 		for(let i=0; i<ROWS*COLS; ++i)
