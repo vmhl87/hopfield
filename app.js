@@ -13,7 +13,7 @@ function setup(){
 	noStroke();
 }
 
-let col = 0, run = false, speed = SPEEDS[0], memories = 0;
+let col = 0, run = false, perturb = false, speed = SPEEDS[0], memories = 0;
 
 function draw(){
 	background(100);
@@ -41,8 +41,8 @@ function draw(){
 
 	button("CLEAR", width/2-50, height/2+SZ*ROWS/2+40, 50);
 	button("RANDOMIZE", width/2+50, height/2+SZ*ROWS/2+40, 50);
-	button("RESET MEMORIES", width/2, height/2+SZ*ROWS/2+80, 150);
-	button("ADD MEMORY (" + memories.toString() + " stored)", width/2, height/2+SZ*ROWS/2+120, 150);
+	button("RESET MEMORIES", width/2-100, height/2+SZ*ROWS/2+80, 100);
+	button("ADD MEMORY (" + memories.toString() + " stored)", width/2+100, height/2+SZ*ROWS/2+80, 100);
 }
 
 function button(T, x, y, w){
@@ -67,14 +67,14 @@ function mouseReleased(){
 	if(mouseIn(width/2+50, height/2+SZ*ROWS/2+40, 50, 20))
 		for(let i=0; i<ROWS*COLS; ++i) graph[i] = Math.random() > 0.5 ? 1 : -1;
 
-	if(mouseIn(width/2, height/2+SZ*ROWS/2+80, 150, 20)){
+	if(mouseIn(width/2-100, height/2+SZ*ROWS/2+80, 100, 20)){
 		for(let i=0; i<ROWS*COLS; ++i)
 			for(let j=0; j<ROWS*COLS; ++j)
 				weight[i][j] = 0;
 		memories = 0;
 	}
 
-	if(mouseIn(width/2, height/2+SZ*ROWS/2+120, 150, 20)){
+	if(mouseIn(width/2+100, height/2+SZ*ROWS/2+80, 100, 20)){
 		for(let i=0; i<ROWS*COLS; ++i)
 			for(let j=0; j<ROWS*COLS; ++j)
 				if(i != j) weight[i][j] += graph[i]*graph[j];
