@@ -13,6 +13,10 @@ function setup(){
 	noStroke();
 }
 
+function windowResized(){
+	resizeCanvas(windowWidth, windowHeight);
+}
+
 let col = 0, run = false, perturb = false, speed = SPEEDS[0], memories = 0;
 
 function draw(){

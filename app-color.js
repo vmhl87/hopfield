@@ -13,6 +13,10 @@ function setup(){
 	noStroke();
 }
 
+function windowResized(){
+	resizeCanvas(windowWidth, windowHeight);
+}
+
 const COLORS = [
 	["BLACK", [-1, -1, -1]],
 	["RED", [1, -1, -1]],
