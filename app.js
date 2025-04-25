@@ -17,7 +17,7 @@ function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
 }
 
-let col = 0, run = false, perturb = false, speed = SPEEDS[0], memories = 0;
+let col = 0, run = false, speed = SPEEDS[0], memories = 0;
 
 function draw(){
 	background(100);
