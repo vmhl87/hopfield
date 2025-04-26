@@ -31,7 +31,7 @@ const COLORS = [
 	["WHITE", [1, 1, 1]]
 ];
 
-let col = 0, col2 = 0, run = false, temp = 0, speed = SPEEDS[0], memories = 0, negs = 0;
+let col = 0, col2 = 0, run = false, temp = 0, speed = SPEEDS[0], memories = 0, negs = 0, paused = false;
 
 function draw(){
 	background(100);
@@ -104,6 +104,19 @@ function draw(){
 	button("CLEAR FEEDBACK", width/2+80, height/2+SZ*ROWS/2+80, 50);
 	button("RESET MEMORIES", width/2-100, height/2+SZ*ROWS/2+120, 100);
 	button("ADD MEMORY (" + memories.toString() + " stored)", width/2+100, height/2+SZ*ROWS/2+120, 100);
+
+	if(paused){
+		fill(0);
+		text("PAUSED", width/2, 40);
+		noLoop();
+	}
+}
+
+function keyReleased(){
+	if(key == 'a'){
+		if(paused) { paused = false; loop(); }
+		else paused = true;
+	}
 }
 
 function button(T, x, y, w){
